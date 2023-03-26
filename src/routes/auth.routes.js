@@ -7,7 +7,11 @@ const AuthStack = createStackNavigator();
 const AuthRoutes = () => {
   return (
     <AuthStack.Navigator>
-      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{title: ''}}
+      />
     </AuthStack.Navigator>
   );
 };

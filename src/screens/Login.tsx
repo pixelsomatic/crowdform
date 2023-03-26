@@ -1,26 +1,55 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {connect} from 'react-redux';
+import Button from '../components/Button';
+import InputText from '../components/InputText';
+import Typography from '../components/Typography';
 
 const LoginScreen = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleLogin = () => {
-  //   // verifique as informações de login aqui
-  //   const user = {username, password};
-  //   // dispatch({ type: 'LOGIN', payload: user });
-  // };
+  const handleLogin = () => {
+    console.log('first');
+    // verifique as informações de login aqui
+    // const user = {username, password};
+    // dispatch({ type: 'LOGIN', payload: user });
+  };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        value={username}
-        onChangeText={setUsername}
-        style={{width: 100, height: 40, backgroundColor: 'blue'}}
+      <View style={{alignItems: 'center'}}>
+        <Typography size={18} weight={'600'} color={'black'}>
+          Login
+        </Typography>
+      </View>
+      <InputText
+        value={email}
+        onChange={value => setEmail(value)}
+        placeholder="john@doe.com"
+        label="E-mail"
       />
-      <TextInput value={password} onChangeText={setPassword} />
-      {/* <Button title="Login" onPress={handleLogin} /> */}
+      <InputText
+        value={password}
+        onChange={value => setPassword(value)}
+        placeholder="Minimum 8 characters"
+        label="Password"
+        secureEntry
+      />
+      <View style={{marginTop: 24}}>
+        <Button label="Login" onPress={handleLogin} />
+      </View>
+      <View style={styles.signUp}>
+        <Typography size={12} weight={'400'} color={'lightGrey'}>
+          Don't have any account?{' '}
+        </Typography>
+        <Typography size={12} weight={'400'} color={'lightGrey'} underline>
+          Sign up{' '}
+        </Typography>
+        <Typography size={12} weight={'400'} color={'lightGrey'}>
+          here
+        </Typography>
+      </View>
     </View>
   );
 };
@@ -28,8 +57,13 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 12,
+  },
+  signUp: {
+    marginVertical: 12,
+    flexDirection: 'row',
+    alignContent: 'center',
     justifyContent: 'center',
   },
 });
