@@ -43,21 +43,21 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
           <AssetsCards
             type="wind"
             status="bullish"
-            value="$1032.23"
+            value="1032.23"
             percentage="3.51"
             navigation={navigation}
           />
           <AssetsCards
             type="solar"
             status="bearish"
-            value="$986.61"
+            value="986.61"
             percentage="0.13"
             navigation={navigation}
           />
           <AssetsCards
             type="nature"
             status="bullish"
-            value="$986.61"
+            value="986.61"
             percentage="0.30"
             navigation={navigation}
           />

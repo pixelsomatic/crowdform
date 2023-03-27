@@ -44,7 +44,13 @@ const AssetsCards = ({
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('DetailsScreen', {title})}>
+        onPress={() =>
+          navigation.navigate('DetailsScreen', {
+            title,
+            value: Number(value) / 10,
+            status,
+          })
+        }>
         <Icon name={icon} color={color} />
         <Typography size={12} weight="600" color="black">
           {title}
@@ -87,7 +93,7 @@ const AssetsCards = ({
         />
         <View style={{flexDirection: 'row'}}>
           <Typography size={14} weight="400" color="black">
-            {value}
+            ${value}
           </Typography>
           <Percentage
             value={percentage}

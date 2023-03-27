@@ -113,7 +113,7 @@ const HomeTabsNavigation = () => {
       })}>
       <HomeTabs.Screen
         component={HomeScreen}
-        name="Home"
+        name="myHome"
         options={{headerShown: false}}
       />
       <HomeTabs.Screen
