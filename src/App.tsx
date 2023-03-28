@@ -22,7 +22,7 @@ import Routes from './routes';
 import LoginScreen from './screens/Login';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {configureStore} from '@reduxjs/toolkit/dist/configureStore';
+import {configureStore} from '@reduxjs/toolkit';
 import loginReducer from './reducers/loginReducers';
 
 type SectionProps = PropsWithChildren<{
@@ -54,8 +54,9 @@ function Section({children, title}: SectionProps): JSX.Element {
     </View>
   );
 }
+export const store = configureStore({reducer: loginReducer});
 
-const store = createStore(loginReducer);
+// const store = createStore(loginReducer);
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

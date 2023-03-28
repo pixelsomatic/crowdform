@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {KeyboardTypeOptions} from 'react-native/Libraries/Components/TextInput/TextInput';
 import Typography from './Typography';
 
 type InputTextProps = {
@@ -9,6 +10,7 @@ type InputTextProps = {
   placeholder?: string;
   label?: string;
   secureEntry?: boolean;
+  type?: KeyboardTypeOptions;
 };
 
 const InputText = ({
@@ -17,6 +19,7 @@ const InputText = ({
   onChange,
   label,
   secureEntry,
+  type,
 }: InputTextProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -37,8 +40,9 @@ const InputText = ({
           placeholder={placeholder}
           style={[styles.input, {width: secureEntry ? '90%' : '100%'}]}
           value={value}
+          keyboardType={type}
           onChangeText={onChange}
-          secureTextEntry={!isVisible}
+          secureTextEntry={secureEntry ? !isVisible : false}
         />
         {secureEntry ? (
           <Icon

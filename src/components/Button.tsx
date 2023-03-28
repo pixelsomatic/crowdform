@@ -5,11 +5,15 @@ import Typography from './Typography';
 type ButtonProps = {
   label: string;
   onPress: () => void;
+  disabled?: boolean;
 };
 
-const Button = ({label, onPress}: ButtonProps) => {
+const Button = ({label, onPress, disabled}: ButtonProps) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, {opacity: disabled ? 0.7 : 1}]}
+      disabled={disabled}>
       <Typography size={16} weight="400" color="white">
         {label}
       </Typography>

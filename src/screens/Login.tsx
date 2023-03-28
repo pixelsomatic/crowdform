@@ -1,19 +1,59 @@
-import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {NavigationProp} from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import Button from '../components/Button';
 import InputText from '../components/InputText';
 import Typography from '../components/Typography';
+import {useSelector, useDispatch} from 'react-redux';
+import {setLoggedIn} from '../actions/loginActions';
 
-const LoginScreen = () => {
+type LoginScreenProps = {
+  navigation: NavigationProp<any>;
+};
+
+interface LoginState {
+  currentData: {
+    email: string;
+    password: string;
+  };
+  possibleData: {
+    email: string;
+    password: string;
+  };
+  isLoggedIn: boolean;
+}
+
+const LoginScreen = ({navigation}: LoginScreenProps) => {
+  const {currentData} = useSelector((state: LoginState) => state);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isFormValid, setIsFormValid] = useState<boolean>(true);
 
   const handleLogin = () => {
-    console.log('first');
-    // verifique as informações de login aqui
-    // const user = {username, password};
-    // dispatch({ type: 'LOGIN', payload: user });
+    setIsFormValid(isLoginValid(currentData, email, password));
+    if (isLoginValid(currentData, email, password)) {
+      dispatch(setLoggedIn(true));
+    }
+  };
+
+  useEffect(() => {
+    setEmail(currentData.email ?? '');
+    setPassword(currentData.password ?? '');
+  }, [currentData.email, currentData.password]);
+
+  const isLoginValid = (
+    currentData: {email: string; password: string},
+    email: string,
+    password: string,
+  ) => {
+    return (
+      email !== '' &&
+      currentData.email === email &&
+      password !== '' &&
+      currentData.password === password
+    );
   };
 
   return (
@@ -36,6 +76,13 @@ const LoginScreen = () => {
         label="Password"
         secureEntry
       />
+      <View>
+        {!isFormValid && (
+          <Typography size={14} weight={'400'} color={'lightRed'}>
+            It looks like you haven't created an account yet, register first
+          </Typography>
+        )}
+      </View>
       <View style={{marginTop: 24}}>
         <Button label="Login" onPress={handleLogin} />
       </View>
@@ -43,9 +90,11 @@ const LoginScreen = () => {
         <Typography size={12} weight={'400'} color={'lightGrey'}>
           Don't have any account?{' '}
         </Typography>
-        <Typography size={12} weight={'400'} color={'lightGrey'} underline>
-          Sign up{' '}
-        </Typography>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+          <Typography size={12} weight={'400'} color={'lightGrey'} underline>
+            Sign up{' '}
+          </Typography>
+        </TouchableOpacity>
         <Typography size={12} weight={'400'} color={'lightGrey'}>
           here
         </Typography>

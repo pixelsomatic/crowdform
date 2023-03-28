@@ -9,13 +9,13 @@ const AuthRoutes = () => {
   return (
     <AuthStack.Navigator>
       <AuthStack.Screen
-        name="Register"
-        component={RegisterScreen}
+        name="Login"
+        component={LoginScreen}
         options={{title: ''}}
       />
       <AuthStack.Screen
-        name="Login"
-        component={LoginScreen}
+        name="Register"
+        component={RegisterScreen}
         options={{title: ''}}
       />
     </AuthStack.Navigator>

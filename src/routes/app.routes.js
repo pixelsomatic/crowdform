@@ -16,7 +16,7 @@ const AppRoutes = () => {
   return (
     <AppStack.Navigator>
       <AppStack.Screen
-        name="Home"
+        name="Main"
         component={HomeTabsNavigation}
         options={{
           headerLeft: () => (
@@ -84,7 +84,6 @@ const HomeTabsNavigation = () => {
     <HomeTabs.Navigator
       tabBar={props => <Navbar {...props} />}
       screenOptions={({route}) => ({
-        headerTitle: screenTitle(route.name),
         tabBarStyle: {height: 65, paddingBottom: 12},
         tabBarIcon: ({focused}) => {
           let iconName;
@@ -113,7 +112,7 @@ const HomeTabsNavigation = () => {
       })}>
       <HomeTabs.Screen
         component={HomeScreen}
-        name="myHome"
+        name="Home"
         options={{headerShown: false}}
       />
       <HomeTabs.Screen
