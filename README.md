@@ -1,6 +1,6 @@
 # Crowdform App 
 
-This project is a assessment test for a crowdform developer role. The project simulate an app to buy and sell ecological funds 
+This project is a screening test for a Crowdform developer role. The aim of the project is to prototype a mobile application that allows users to buy and sell ecological funds. The app will simulate a marketplace for users to invest in sustainable projects and promote environmental conservation efforts.
 
 ## Installation
 
