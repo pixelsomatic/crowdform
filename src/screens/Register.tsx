@@ -2,7 +2,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, TouchableOpacity, Modal} from 'react-native';
 import {Checkbox} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {updateLogin} from '../actions/loginActions';
 import Button from '../components/Button';
 import InputText from '../components/InputText';

@@ -56,8 +56,6 @@ function Section({children, title}: SectionProps): JSX.Element {
 }
 export const store = configureStore({reducer: loginReducer});
 
-// const store = createStore(loginReducer);
-
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 

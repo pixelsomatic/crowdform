@@ -5,8 +5,6 @@ import {useSelector} from 'react-redux';
 
 const Routes = () => {
   const {isLoggedIn} = useSelector(state => state);
-  console.log(isLoggedIn);
-  // return <AuthRoutes />;
   return isLoggedIn ? <AppRoutes /> : <AuthRoutes />;
 };
 
